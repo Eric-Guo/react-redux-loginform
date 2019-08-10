@@ -11,7 +11,7 @@ class Todos extends Component {
 		var config = {
 			headers: {}
 		}
-		config['headers']['Authorization'] = 'Bearer ' + localStorage.getItem('jwt');
+		config['headers']['Authorization'] = localStorage.getItem('jwt');
 		return config;
 	}
 

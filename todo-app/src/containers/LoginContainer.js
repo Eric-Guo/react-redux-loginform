@@ -8,15 +8,15 @@ import { withRouter } from "react-router-dom";
 class LoginContainer extends Component {
     handleSubmit = (params) => {
         let data = {
-            auth: {
+            user: {
                 email: params.email,
                 password: params.password
             }
         }
-		axios.post('/api/v1/user_token', data)
+		axios.post('/users/sign_in', data)
 		.then(response => {
             this.props.dispatch(authenticated());
-            localStorage.setItem('jwt', response.data.jwt);
+            localStorage.setItem('jwt', response.headers['authorization']);
             this.props.history.push('/');
 		})
 		.catch(error => {
